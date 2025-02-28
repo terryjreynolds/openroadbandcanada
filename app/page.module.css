@@ -6,6 +6,7 @@
   --button-primary-hover: #383838;
   --button-secondary-hover: #f2f2f2;
 
+  background-color: #1a1a1a;
   display: grid;
   grid-template-rows: 20px 1fr 20px;
   align-items: center;
@@ -14,6 +15,10 @@
   padding: 80px;
   gap: 64px;
   font-family: var(--font-geist-sans);
+}
+
+.pagetext {
+  color:#f2f2f2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -79,6 +84,11 @@
   font-size: 16px;
   line-height: 20px;
   font-weight: 500;
+}
+
+.socialmedia {
+color: #e0c35e;
+size: 50px;
 }
 
 a.primary {
