@@ -10,20 +10,20 @@ export default function Footer() {
   return (
     //overlay
     <div >
-      <div className={styles.pagetext}>
-<strong>
-<span>
-JUST DRIVE IT!
-</span>
-</strong>
-<h2>
+      
+<section className={styles.pagetext}>
+  <div>
+<p>
 The Great Home of the Soul is the Open Road...!
-</h2>
-<h2>
+</p>
+<p>
 D.H. Lawrence
-</h2>
-</div>
+</p>
+  </div>
+</section>
     </div>
     
   );
 }
+
+

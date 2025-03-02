@@ -1,30 +1,65 @@
 .page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  background-color: #1a1a1a;
   display: grid;
-  grid-template-rows: 20px 1fr 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  grid-template-rows: 1fr 1fr 1fr 1fr; 
   align-items: center;
-  justify-items: center;
-  /* min-height: 100svh;
+  justify-items: center; 
+  min-height: 100svh;
   padding: 80px;
-  gap: 64px; */
+  gap: 64px;
+  font-family: var(--font-geist-sans);
+  position: relative;
+  z-index: 1; /* Puts it above the background */
+  background: transparent;
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e0c35e;
+}
+.pagetext {
+  display: grid;
+  color: white;
+  background-color: #1a1a1a;
+  grid-template-rows: 1fr 1fr 1fr 1fr; 
+  align-items: center;
+  justify-items: center; 
+  min-height: 100svh;
+  padding: 80px;
+  gap: 64px;
+  position: relative;
+  z-index: 1; /* Puts it above the background */
+  background: transparent;
   font-family: var(--font-geist-sans);
 }
 
 .fixedbackground {
-  background-image: url("/ecotaybandpic.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full width */
+  height: 100vh; /* Full height */
+  background-color: black; /* Solid black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.pagetext {
-  color:#f2f2f2;
+.fixedbackground::before {
+  content: "";
+  position: absolute;
+  width: 80vw; /* Adjust for more or less border */
+  height: 100vh;
+  background-image: url("/ecotaybandpic.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.socials {
+  display: flex;
+  gap: 20px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -97,7 +132,7 @@ color: #e0c35e;
 size: 50px;
 }
 
-a.primary {
+/* a.primary {
   background: var(--foreground);
   color: var(--background);
   gap: 8px;
@@ -106,7 +141,7 @@ a.primary {
 a.secondary {
   border-color: var(--gray-alpha-200);
   min-width: 180px;
-}
+} */
 
 .menu {
   grid-row-start: 3;

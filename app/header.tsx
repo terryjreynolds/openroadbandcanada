@@ -9,9 +9,10 @@ import { faFacebookF, faInstagram, faYoutube } from '@fortawesome/free-brands-sv
 export default function Header() {
   return (
     //overlay
-    <div >
-      <div>
-        <div >
+    <div>
+   
+      <div className={styles.page}>
+        <div className={styles.socials} >
        
           <a target="_blank" 
           href="https://www.facebook.com/openroadbandcanada/" 
@@ -40,8 +41,8 @@ export default function Header() {
           // className={styles.logo}
           src="/headerplate.webp"
           alt="band logo"
-          width={180}
-          height={38}
+          width={300}
+          height={125}
           priority
         />
        
@@ -58,6 +59,8 @@ export default function Header() {
       </div>
 
       </div>
+      
+      
       
     </div>
     
