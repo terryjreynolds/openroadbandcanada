@@ -1,16 +1,14 @@
 .page {
   display: grid;
-  background-color: rgba(0, 0, 0, 0.2);
-  grid-template-rows: 1fr 1fr 1fr 1fr; 
+  grid-template-rows: auto;
   align-items: center;
   justify-items: center; 
   min-height: 100svh;
   padding: 80px;
   gap: 64px;
-  font-family: var(--font-geist-sans);
   position: relative;
-  z-index: 1; /* Puts it above the background */
-  background: transparent;
+  z-index: 1; 
+  background: none;
 }
 
 .text {
@@ -19,44 +17,64 @@
   align-items: center;
   color: #e0c35e;
 }
+
 .pagetext {
   display: grid;
+  grid-template-rows: auto;
   color: white;
-  background-color: #1a1a1a;
-  grid-template-rows: 1fr 1fr 1fr 1fr; 
+  background-color: rgba(0, 0, 0, 0.2);
   align-items: center;
   justify-items: center; 
+  text-align: center;
   min-height: 100svh;
   padding: 80px;
   gap: 64px;
   position: relative;
-  z-index: 1; /* Puts it above the background */
-  background: transparent;
-  font-family: var(--font-geist-sans);
+  z-index: 1; 
+  background: none;
 }
 
+/* Background container stays fixed */
 .fixedbackground {
-  position: absolute;
+  position: fixed; /* Keep background in place */
   top: 0;
   left: 0;
-  width: 100vw; /* Full width */
-  height: 100vh; /* Full height */
-  background-color: black; /* Solid black background */
+  width: 100vw;
+  height: 100vh;
+  background-color: black; /* Black background */
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: -1; /* Ensures it's behind everything */
 }
 
+/* The image inside the background */
 .fixedbackground::before {
   content: "";
   position: absolute;
-  width: 80vw; /* Adjust for more or less border */
+  width: 80vw; /* Adjust width to leave a border */
   height: 100vh;
   background-image: url("/ecotaybandpic.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
+
+/* The page content that should scroll */
+.pagecontent {
+  position: relative; /* Normal positioning */
+  z-index: 2; /* Make sure it's above the background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px; /* Add padding to prevent overlap with header */
+  color: #e0c35e; /* Ensures text is visible */
+  width: 100%;
+  min-height: 30vh;  
+  background-color: rgba(0, 0, 0, 0.2);
+  }
+
 .socials {
   display: flex;
   gap: 20px;
@@ -64,9 +82,9 @@
 
 @media (prefers-color-scheme: dark) {
   .page {
-    --gray-rgb: 255, 255, 255;
+    /* --gray-rgb: 255, 255, 255;
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+    --gray-alpha-100: rgba(var(--gray-rgb), 0.06); */
 
     --button-primary-hover: #ccc;
     --button-secondary-hover: #1a1a1a;
@@ -81,7 +99,6 @@
 }
 
 .main ol {
-  font-family: var(--font-geist-mono);
   padding-left: 0;
   margin: 0;
   font-size: 14px;
@@ -96,7 +113,6 @@
 
 .main code {
   font-family: inherit;
-  background: var(--gray-alpha-100);
   padding: 2px 4px;
   border-radius: 4px;
   font-weight: 600;

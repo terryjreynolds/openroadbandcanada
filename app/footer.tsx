@@ -13,12 +13,10 @@ export default function Footer() {
       
 <section className={styles.pagetext}>
   <div>
-<p>
-The Great Home of the Soul is the Open Road...!
-</p>
-<p>
+<h4>
+&#39;The Great Home of the Soul is the Open Road&#39;... <br /> <br/>
 D.H. Lawrence
-</p>
+</h4>
   </div>
 </section>
     </div>

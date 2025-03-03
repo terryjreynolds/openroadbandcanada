@@ -13,10 +13,12 @@ export default function Home() {
   return (
     //overlay
     <div >
+<div className={styles.fixedbackground}></div>
+<div className={styles.pagecontent}>
 
-<div className={styles.fixedbackground}>
-  
-<h1 className={styles.text}>JUST DRIVE IT!</h1>
+<h1>JUST DRIVE IT!</h1>
+
+
 </div>
 
   
