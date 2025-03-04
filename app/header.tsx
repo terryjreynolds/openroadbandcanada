@@ -36,13 +36,12 @@ export default function Header() {
           </a>
           
         </div>
-      <main className={styles.main}>
+      <main>
         <Image
-          // className={styles.logo}
           src="/headerplate.webp"
           alt="band logo"
           width={300}
-          height={125}
+          height={150}
           priority
         />
        

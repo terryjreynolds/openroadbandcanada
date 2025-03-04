@@ -11,14 +11,15 @@ export default function Footer() {
     //overlay
     <div >
       
-<section className={styles.pagetext}>
-  <div>
-<h4>
+
+ <div className={styles.pagecontents}>
+ <h4 >
 &#39;The Great Home of the Soul is the Open Road&#39;... <br /> <br/>
 D.H. Lawrence
 </h4>
-  </div>
-</section>
+ </div>
+
+ 
     </div>
     
   );
