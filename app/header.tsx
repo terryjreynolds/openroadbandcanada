@@ -47,8 +47,8 @@ export default function Header() {
        
       </main>
       <div className={styles.menu}>
-      <Link href="/">Home</Link>
-        <Link href="/about">About Us</Link>
+      <Link href="/" >Home</Link>
+        <Link href="/about" >About Us</Link>
         <Link href="/blog">Blog</Link>
         <Link href="/events">Events</Link>
         <Link href="/video">Video</Link>

@@ -11,6 +11,16 @@
   background: none;
 }
 
+.fixedHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; /* Adjust height as needed */
+  background-color: black;
+  z-index: 1000;
+}
+
 .text {
   display: flex;
   justify-content: center;
@@ -37,15 +47,16 @@
 .pagecontent {
   position: relative; /* Normal positioning */
   z-index: 2; /* Make sure it's above the background */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+ display: grid;
+    grid-template-rows: auto;
+    justify-items: center; 
+    text-align: center;
   padding: 100px 20px; /* Add padding to prevent overlap with header */
   color: #e0c35e; /* Ensures text is visible */
   width: 100%;
   min-height: 30vh;  
   background-color: rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
   }
 
   .pagecontents {
@@ -58,10 +69,24 @@
      padding: 100px 20px;/* Add padding to prevent overlap with header */
     color: white; /* Ensures text is visible */
     width: 100%;
-    margin: 2em;
+    margin: 2rem 0 2rem 0;
     min-height: 30vh;  
     background-color: rgba(0, 0, 0, 0.2);
     }
+    .pageInfoWhiteJustified {
+      position: relative; /* Normal positioning */
+      z-index: 2; /* Make sure it's above the background */
+      display: grid;
+      grid-template-rows: auto;
+      justify-items: center; 
+      text-align: left;
+       padding: 100px 20px;/* Add padding to prevent overlap with header */
+      color: white; /* Ensures text is visible */
+      width: 100%;
+      margin: 2rem 0 2rem 0;
+      min-height: 30vh;  
+      background-color: rgba(0, 0, 0, 0.2);
+      }
 /* Background container stays fixed */
 .fixedbackground {
   position: fixed; /* Keep background in place */
@@ -100,19 +125,23 @@
   background-image: url("/ribfest.webp");
 }
 
-/* The image inside the background */
-/* .fixedbackground::before {
-  content: "";
-  position: absolute;
-  width: 80vw; 
+.backgroundCamaro {
+  position: fixed; /* Keep background in place */
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 100vh;
-  background-image: url("/ecotaybandpic.jpg");
+  background-color: black; /* Black background */
+  background-image: url(/camaro.webp);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-} */
-
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1; /* Ensures it's behind everything */
+  overflow: hidden;
+}
 .socials {
   display: flex;
   gap: 25px;
