@@ -18,7 +18,7 @@ export default function About() {
      fans of all ages. With electrifying versions of classic and modern favourites, 
      this five-man band carries their torch high. 
    </p>
-   <br/>
+  
    <p>
    The venues they typically perform at range from local bars and halls to larger festivals, 
    each setting providing a unique backdrop for their electrifying shows. They have built a loyal fan base,
@@ -26,7 +26,7 @@ export default function About() {
     The chemistry among the band members translates into an infectious energy that captivates everyone 
     in attendance, leaving audiences eager for the next performance. 
    </p>
-   <br/>
+   
    <p>
    Come hit the open road with us!
    </p>

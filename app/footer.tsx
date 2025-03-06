@@ -12,7 +12,7 @@ export default function Footer() {
     <div >
       
 
- <div className={styles.pagecontents}>
+ <div className={styles.quotation}>
  <h4 >
 &#39;The Great Home of the Soul is the Open Road&#39;... <br /> <br/>
 D.H. Lawrence

@@ -1,3 +1,6 @@
+"use client";
+import { usePathname } from "next/navigation"; 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from 'next/link';
@@ -7,12 +10,24 @@ import { faFacebookF, faInstagram, faYoutube } from '@fortawesome/free-brands-sv
 
 
 export default function Header() {
+
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    if (isHome) {
+      setAnimate(true);
+    }
+  }, [isHome]);
+
   return (
+
     //overlay
     <div>
    
       <div className={styles.page}>
-        <div className={styles.socials} >
+        <div className={`${styles["socials"]} ${animate ? styles["socials-animate"] : ""}`} >
        
           <a target="_blank" 
           href="https://www.facebook.com/openroadbandcanada/" 
@@ -36,7 +51,7 @@ export default function Header() {
           </a>
           
         </div>
-      <main>
+      <main className={`${styles["plate"]} ${animate ? styles["plate-animate"] : ""}`}>
         <Image
           src="/headerplate.webp"
           alt="band logo"
@@ -46,7 +61,7 @@ export default function Header() {
         />
        
       </main>
-      <div className={styles.menu}>
+      <div className={`${styles["menu"]} ${animate ? styles["menu-animate"] : ""}`}>
       <Link href="/" >Home</Link>
         <Link href="/about" >About Us</Link>
         <Link href="/blog">Blog</Link>

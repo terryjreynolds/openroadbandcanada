@@ -1,14 +1,62 @@
 .page {
   display: grid;
-  grid-template-rows: auto;
-  align-items: center;
+  grid-template-rows: auto; 
   justify-items: center; 
-  min-height: 15svh;
-  padding: 200px;
-  gap: 64px;
-  position: relative;
-  z-index: 1; 
-  background: none;
+  padding: 14rem 0 4rem 0;
+  gap: 2.5rem;
+  margin-bottom: 1rem;
+  z-index: 1;  
+  background-color: none;
+}
+.socials {
+  display: flex;
+  gap: 2rem;
+  opacity: 0;
+  transition: opacity 2.0s ease-out;
+}
+.socials-animate{
+  opacity: 1; 
+}
+.menu {
+  display: flex;
+  gap: 1.5rem;
+  margin: 10px;
+  opacity: 0;
+  transition: opacity 2.0s ease-out;
+}
+.menu-animate {
+  display: flex;
+  gap: 1.5rem;
+  margin: 10px;
+  opacity: 1;
+}
+
+.menu a {
+  color: #efbf57;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: white;
+  text-decoration: underline;
+}
+.plate{
+  opacity: 1;
+}
+@keyframes verticalGrow {
+  0% {
+    opacity: 0;
+    transform: scaleY(0); 
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1); 
+  }
+}
+
+.plate-animate{
+  animation: verticalGrow 1.5s ease-out forwards;
+  transform-origin: center;
 }
 
 .fixedHeader {
@@ -47,19 +95,17 @@
 .pagecontent {
   position: relative; /* Normal positioning */
   z-index: 2; /* Make sure it's above the background */
- display: grid;
-    grid-template-rows: auto;
-    justify-items: center; 
-    text-align: center;
-  padding: 100px 20px; /* Add padding to prevent overlap with header */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #e0c35e; /* Ensures text is visible */
   width: 100%;
-  min-height: 30vh;  
+  min-height: 10em;
+  margin-top: 6.5rem;
   background-color: rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
   }
 
-  .pagecontents {
+  .quotation {
     position: relative; /* Normal positioning */
     z-index: 2; /* Make sure it's above the background */
     display: grid;
@@ -74,16 +120,20 @@
     background-color: rgba(0, 0, 0, 0.2);
     }
     .pageInfoWhiteJustified {
-      position: relative; /* Normal positioning */
-      z-index: 2; /* Make sure it's above the background */
+      position: relative; 
+      z-index: 2; 
       display: grid;
-      grid-template-rows: auto;
+      grid-template-rows: 1fr 1fr;
       justify-items: center; 
       text-align: left;
-       padding: 100px 20px;/* Add padding to prevent overlap with header */
-      color: white; /* Ensures text is visible */
+      gap: 1em;
+      padding-top: 2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-bottom: 2rem;
+      color: white; 
       width: 100%;
-      margin: 2rem 0 2rem 0;
+      margin: 1.2rem 0 2rem 0;
       min-height: 30vh;  
       background-color: rgba(0, 0, 0, 0.2);
       }
@@ -141,10 +191,6 @@
   align-items: center;
   z-index: -1; /* Ensures it's behind everything */
   overflow: hidden;
-}
-.socials {
-  display: flex;
-  gap: 25px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -225,27 +271,6 @@ a.secondary {
   border-color: var(--gray-alpha-200);
   min-width: 180px;
 } */
-
-.menu {
-  grid-row-start: 3;
-  display: flex;
-  gap: 24px;
-  margin: 10px;
-}
-
-
-.menu a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #efbf57;
-  text-decoration: none;
-}
-
-.menu a:hover {
-  color: white;
-  text-decoration: underline;
-}
 
 .footer img {
   flex-shrink: 0;
