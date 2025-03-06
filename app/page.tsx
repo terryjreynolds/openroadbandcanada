@@ -38,7 +38,7 @@ export default function Home() {
       ))}
     </div>
 
-    {/* Content that should scroll */}
+    
     <div className={styles.pagecontent}>
       <h1>JUST DRIVE IT!</h1>
     </div>

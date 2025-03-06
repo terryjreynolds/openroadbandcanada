@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'; 
-
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function Header() {
@@ -23,10 +23,21 @@ export default function Header() {
 
   return (
 
-    //overlay
+    
     <div>
    
+   <nav className={styles.navbar}>
+      <button className={styles.hamburgerMenuButton}>
+      <FontAwesomeIcon className={styles.hamburgerIcon} icon={faBars} />
+      </button>
+    </nav>
+ 
+   
       <div className={styles.page}>
+
+        {/* hamburger nav menu bars visible online at media query sizes */}
+
+        
         <div className={`${styles["socials"]} ${animate ? styles["socials-animate"] : ""}`} >
        
           <a target="_blank" 
@@ -57,6 +68,7 @@ export default function Header() {
           alt="band logo"
           width={300}
           height={150}
+          layout= "responsive"
           priority
         />
        
@@ -75,8 +87,9 @@ export default function Header() {
       </div>
       
       
+   </div>
       
-    </div>
+    
     
   );
 }

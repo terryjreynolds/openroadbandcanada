@@ -17,6 +17,11 @@
 .socials-animate{
   opacity: 1; 
 }
+
+.socialmedia {
+  color: #e0c35e;
+  font-size: 1.3rem;
+  }
 .menu {
   display: flex;
   gap: 1.5rem;
@@ -41,6 +46,7 @@
   text-decoration: underline;
 }
 .plate{
+  display: flex;
   opacity: 1;
 }
 @keyframes verticalGrow {
@@ -68,7 +74,26 @@
   background-color: black;
   z-index: 1000;
 }
-
+.hamburgerMenuButton {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;   
+  outline: none;
+ 
+}
+.navbar {
+  position: relative;  
+  padding: 1rem;       
+}
+.hamburgerIcon {
+color: #e0c35e;
+background-color: transparent;
+}
 .text {
   display: flex;
   justify-content: center;
@@ -93,12 +118,12 @@
 
 /* The page content that should scroll */
 .pagecontent {
-  position: relative; /* Normal positioning */
-  z-index: 2; /* Make sure it's above the background */
+  position: relative; 
+  z-index: 2; 
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #e0c35e; /* Ensures text is visible */
+  color: #e0c35e;
   width: 100%;
   min-height: 10em;
   margin-top: 6.5rem;
@@ -210,67 +235,24 @@
   gap: 32px;
   grid-row-start: 1;
 }
+/* ---------------------------------Media Queries-------------------------------------------- */
 
-/* .main ol {
-  padding-left: 0;
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
-} */
+/* toggle hamburger menu visibility on mobile devices*/
 
-/* .main li:not(:last-of-type) {
-  margin-bottom: 8px;
-} */
-
-/* .main code {
-  font-family: inherit;
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-} */
-
-/* .ctas {
-  display: flex;
-  gap: 16px;
-} */
-
-/* .ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
-  border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-} */
-
-.socialmedia {
-color: #e0c35e;
-font-size: 1.3rem;
+@media (max-width: 768px) {
+  /* When the screen is 768px or smaller (mobile), show the hamburger and hide the menu */
+  .hamburgerMenuButton {
+    display: block; /* Show the hamburger menu */
+  }
+  
+  .menu {
+    display: none;  /* Hide the regular menu on mobile */
+  }
+  .menu-animate {
+    display: none;
+  }
 }
 
-/* a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 180px;
-} */
 
 .footer img {
   flex-shrink: 0;
