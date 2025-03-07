@@ -1,15 +1,17 @@
 .page {
-  display: grid;
-  grid-template-rows: auto; 
-  justify-items: center; 
-  padding: 14rem 0 4rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: end;
+  align-items: center;
+  max-width: 100%;
   gap: 2.5rem;
-  margin-bottom: 1rem;
   z-index: 1;  
-  background-color: none;
 }
 .socials {
   display: flex;
+  justify-content: center;
+  width: 100%;
   gap: 2rem;
   opacity: 0;
   transition: opacity 2.0s ease-out;
@@ -20,12 +22,14 @@
 
 .socialmedia {
   color: #e0c35e;
-  font-size: 1.3rem;
+  font-size: clamp(1.2rem, 1.8vw, 3rem);
   }
 .menu {
   display: flex;
+  justify-content: center;
   gap: 1.5rem;
   margin: 10px;
+  width: 100%;
   opacity: 0;
   transition: opacity 2.0s ease-out;
 }
@@ -47,7 +51,9 @@
 }
 .plate{
   display: flex;
+  justify-content: center;
   opacity: 1;
+  width: 100%;
 }
 @keyframes verticalGrow {
   0% {
@@ -75,7 +81,7 @@
   z-index: 1000;
 }
 .hamburgerMenuButton {
-  display: none;
+  visibility: hidden;
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -87,8 +93,10 @@
  
 }
 .navbar {
-  position: relative;  
-  padding: 1rem;       
+  padding: 1rem;
+  width: 100%;
+  margin-bottom: 20dvh;
+  min-height: 20dvh;
 }
 .hamburgerIcon {
 color: #e0c35e;
@@ -124,9 +132,8 @@ background-color: transparent;
   justify-content: center;
   align-items: center;
   color: #e0c35e;
-  width: 100%;
-  min-height: 10em;
-  margin-top: 6.5rem;
+  min-height: 25dvh;
+  margin-top: 20dvh;
   background-color: rgba(0, 0, 0, 0.2);
   }
 
@@ -242,14 +249,14 @@ background-color: transparent;
 @media (max-width: 768px) {
   /* When the screen is 768px or smaller (mobile), show the hamburger and hide the menu */
   .hamburgerMenuButton {
-    display: block; /* Show the hamburger menu */
+    visibility: visible;/* Show the hamburger menu */
   }
   
   .menu {
-    display: none;  /* Hide the regular menu on mobile */
+    display: block;  /* Hide the regular menu on mobile */
   }
   .menu-animate {
-    display: none;
+    display: none; 
   }
 }
 

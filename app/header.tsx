@@ -26,14 +26,18 @@ export default function Header() {
     
     <div>
    
+   
    <nav className={styles.navbar}>
       <button className={styles.hamburgerMenuButton}>
       <FontAwesomeIcon className={styles.hamburgerIcon} icon={faBars} />
       </button>
     </nav>
- 
+   
+   
    
       <div className={styles.page}>
+
+    
 
         {/* hamburger nav menu bars visible online at media query sizes */}
 
@@ -66,9 +70,7 @@ export default function Header() {
         <Image
           src="/headerplate.webp"
           alt="band logo"
-          width={300}
-          height={150}
-          layout= "responsive"
+          width={280} height={180} style={{ maxWidth: "20vw", height: "auto" }}
           priority
         />
        
