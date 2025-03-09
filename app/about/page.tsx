@@ -32,7 +32,13 @@ export default function About() {
    </p>
     </section>
     
-      
+      <section className={styles.otherWhiteHeadings}>
+
+        <h2>
+          OPEN ROAD BAND IS:
+        </h2>
+
+      </section>
         
       
       

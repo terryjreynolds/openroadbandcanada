@@ -25,22 +25,15 @@ export default function Header() {
 
     
     <div>
-   
-   
-   <nav className={styles.navbar}>
+    
+      <div className={styles.page}>
+
+        {/* hamburger nav menu bars visible online at media query sizes */}
+        <nav className={styles.navbar}>
       <button className={styles.hamburgerMenuButton}>
       <FontAwesomeIcon className={styles.hamburgerIcon} icon={faBars} />
       </button>
     </nav>
-   
-   
-   
-      <div className={styles.page}>
-
-    
-
-        {/* hamburger nav menu bars visible online at media query sizes */}
-
         
         <div className={`${styles["socials"]} ${animate ? styles["socials-animate"] : ""}`} >
        
@@ -70,7 +63,12 @@ export default function Header() {
         <Image
           src="/headerplate.webp"
           alt="band logo"
-          width={280} height={180} style={{ maxWidth: "20vw", height: "auto" }}
+          width={800} 
+          height={400} 
+          style={{
+          width: "clamp(200px, 50vw, 800px)", 
+          height: "auto"
+          }}
           priority
         />
        
