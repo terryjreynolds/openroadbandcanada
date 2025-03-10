@@ -103,6 +103,63 @@
 color: #e0c35e;
 background-color: transparent;
 }
+
+/* .hamburgerMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 250px;
+  background: #333;
+  color: white;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 40;
+} */
+
+/* Open State */
+.hamburgerMenu-open {
+  transform: translateY(0);
+}
+
+/* Menu List */
+.hamburger-list {
+  margin-top: 64px;
+  padding: 0;
+  list-style: none;
+}
+
+.hamburger-list li {
+  padding: 16px;
+  border-bottom: 1px solid #444;
+}
+
+.hamburger-list a {
+  color: #e0c35e;
+  text-decoration: none;
+  display: block;
+  transition: color 0.3s;
+}
+
+.hamburger-list a:hover {
+  color: #f39c12;
+  text-decoration: underline;
+}
+
+/* Overlay to Close Menu */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 30;
+}
+
+
+
+
 .text {
   display: flex;
   justify-content: center;
@@ -235,6 +292,19 @@ background-color: transparent;
   align-items: center;
   z-index: -1; /* Ensures it's behind everything */
   overflow: hidden;
+}
+
+.bioImage {
+  display: Flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  gap: 1em;
+  min-width: 100vw;
+  margin-bottom: 2rem;
+  padding: 4rem 0 4rem 8rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2); 
 }
 
 @media (prefers-color-scheme: dark) {

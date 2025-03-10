@@ -1,5 +1,6 @@
 // import Image from "next/image";
 import styles from "../page.module.css";
+import Image from "next/image"; 
 // import Link from 'next/link';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faFacebookF, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'; 
@@ -39,8 +40,96 @@ export default function About() {
         </h2>
 
       </section>
-        
+
+      <div className={styles.bioImage}>
+       <Image
+                 src="/biobrett.webp"
+                 alt="drummer Brett Stinson"
+                 width={800} 
+                 height={400} 
+                 style={{
+                 width: "clamp(100px, 40vw, 600px)", 
+                 height: "auto"
+                 }}
+                 priority
+               />
+
+               <p>
+                Brett Stinson- Drums/Percussion
+               </p>
+      </div>
+
+      <div className={styles.bioImage}>
+       <Image
+                 src="/biodave.webp"
+                 alt="Vocalist and Guitarist Dave Roberts"
+                 width={800} 
+                 height={400} 
+                 style={{
+                 width: "clamp(100px, 40vw, 600px)", 
+                 height: "auto"
+                 }}
+                 priority
+               />
+
+               <p>
+                David Roberts- Vocals/Guitar
+               </p>
+      </div>
+
+      <div className={styles.bioImage}>
+       <Image
+                 src="/bioDennis.webp"
+                 alt="Lead Guitarist Dennis Larocque"
+                 width={800} 
+                 height={400} 
+                 style={{
+                 width: "clamp(100px, 40vw, 600px)", 
+                 height: "auto"
+                 }}
+                 priority
+               />
+
+               <p>
+                Dennis Larocque- Guitar/Harmonica/Vocals
+               </p>
+      </div>
+
+      <div className={styles.bioImage}>
+       <Image
+                 src="/biojim.webp"
+                 alt="Keyboards and vocals Jim Roberts"
+                 width={800} 
+                 height={400} 
+                 style={{
+                 width: "clamp(100px, 40vw, 600px)", 
+                 height: "auto"
+                 }}
+                 priority
+               />
+
+               <p>
+                Jim Roberts- Keys/Vocals/Tambourine
+               </p>
+      </div>
       
+      <div className={styles.bioImage}>
+       <Image
+                 src="/bioterry.webp"
+                 alt="Bassist and Back up vocalist Terry Reynolds"
+                 width={800} 
+                 height={400} 
+                 style={{
+                 width: "clamp(100px, 40vw, 600px)", 
+                 height: "auto"
+                 }}
+                 priority
+               />
+
+               <p>
+                Terry Reynolds- Bass Guitar/ Vocals
+               </p>
+      </div>
       
     </div>
     

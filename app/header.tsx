@@ -11,6 +11,9 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 export default function Header() {
 
+
+  const [isOpen, setIsOpen] = useState(false);
+
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [animate, setAnimate] = useState(false);
@@ -30,9 +33,49 @@ export default function Header() {
 
         {/* hamburger nav menu bars visible online at media query sizes */}
         <nav className={styles.navbar}>
-      <button className={styles.hamburgerMenuButton}>
+      <button onClick={() => setIsOpen(!isOpen)} className="hamburgerMenuButton">
       <FontAwesomeIcon className={styles.hamburgerIcon} icon={faBars} />
+
       </button>
+
+
+      <div className={`hamburgerMenu ${isOpen ? "hamburgerMenu-open" : ""}`}>
+
+      <ul id="hamburgerMenu">
+
+        <li>
+        <Link href="/" onClick={() => setIsOpen(false)}>Home</Link>
+        </li>
+        <li>
+        <Link href="/" onClick={() => setIsOpen(false)}>About Us</Link>
+        </li>
+        <li>
+        <Link href="/" onClick={() => setIsOpen(false)}>Blog</Link>
+        </li>
+        <li>
+        <Link href="/" onClick={() => setIsOpen(false)}>Events</Link>
+        </li>
+        <li>
+        <Link href="/" onClick={() => setIsOpen(false)}>Video</Link>
+        </li>
+        <li>
+        <Link href="/" onClick={() => setIsOpen(false)}>Photos</Link>
+        </li>
+        <li>
+        <Link href="/" onClick={() => setIsOpen(false)}>Song List</Link>
+        </li>
+        <li>
+        <Link href="/" onClick={() => setIsOpen(false)}>Contact</Link>
+        </li>
+
+       
+    </ul>
+    
+    </div>
+     
+     {/* Overlay to Close on Click Outside */}
+     {isOpen && <div className="overlay" onClick={() => setIsOpen(false)}></div>}
+     
     </nav>
         
         <div className={`${styles["socials"]} ${animate ? styles["socials-animate"] : ""}`} >

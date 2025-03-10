@@ -27,7 +27,7 @@ export default function Home() {
 
   return (
 <>
-
+  
     {/* Background stays fixed */}
     <div className={styles.fixedbackground}>
       {backgrounds.map((bg, index) => (
