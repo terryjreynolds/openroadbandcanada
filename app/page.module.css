@@ -92,62 +92,57 @@
   background-color: transparent;
   border: none;   
   outline: none;
- 
 }
+
+.hamburgerIcon {
+  color: #e0c35e;
+  background-color: transparent;
+  }
+
 .navbar {
   padding: 1rem;
   width: 100%;
  
 }
-.hamburgerIcon {
-color: #e0c35e;
-background-color: transparent;
-}
 
-/* .hamburgerMenu {
+.hamburgerMenu {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
-  max-width: 250px;
-  background: #333;
-  color: white;
-  transform: translateY(-100%);
-  transition: transform 0.3s ease-in-out;
+  left: -50vw;
+  transition: left 0.4s ease-in-out;
   z-index: 40;
-} */
-
-/* Open State */
-.hamburgerMenu-open {
-  transform: translateY(0);
+  overflow-y: auto;
 }
 
-/* Menu List */
-.hamburger-list {
+.hamburgerMenuOpen {
+  left: 0;
+}
+
+.hamburgerList {
   margin-top: 64px;
   padding: 0;
   list-style: none;
 }
 
-.hamburger-list li {
+.hamburgerList li {
   padding: 16px;
   border-bottom: 1px solid #444;
 }
 
-.hamburger-list a {
+.hamburgerList a {
   color: #e0c35e;
   text-decoration: none;
   display: block;
   transition: color 0.3s;
 }
 
-.hamburger-list a:hover {
+.hamburgerList a:hover {
   color: #f39c12;
   text-decoration: underline;
-}
+} 
 
 /* Overlay to Close Menu */
-.overlay {
+ .overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -156,9 +151,6 @@ background-color: transparent;
   background: rgba(0, 0, 0, 0.5);
   z-index: 30;
 }
-
-
-
 
 .text {
   display: flex;

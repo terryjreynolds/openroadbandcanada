@@ -18,6 +18,7 @@ export default function Header() {
   const isHome = pathname === "/";
   const [animate, setAnimate] = useState(false);
 
+// contols the license plate animation
   useEffect(() => {
     if (isHome) {
       setAnimate(true);
@@ -33,39 +34,43 @@ export default function Header() {
 
         {/* hamburger nav menu bars visible online at media query sizes */}
         <nav className={styles.navbar}>
-      <button onClick={() => setIsOpen(!isOpen)} className="hamburgerMenuButton">
-      <FontAwesomeIcon className={styles.hamburgerIcon} icon={faBars} />
+        <button 
+  onClick={() => {
+    setIsOpen(!isOpen);
+  }} 
+  className={styles.hamburgerMenuButton}
+> 
+  <FontAwesomeIcon className={styles.hamburgerIcon} icon={faBars} />
+</button>
 
-      </button>
 
+      <div className={`${styles.hamburgerMenu} ${isOpen ? styles.hamburgerMenuOpen : ""}`}>
 
-      <div className={`hamburgerMenu ${isOpen ? "hamburgerMenu-open" : ""}`}>
-
-      <ul id="hamburgerMenu">
+      <ul className={styles.hamburgerList}>
 
         <li>
         <Link href="/" onClick={() => setIsOpen(false)}>Home</Link>
         </li>
         <li>
-        <Link href="/" onClick={() => setIsOpen(false)}>About Us</Link>
+        <Link href="/about" onClick={() => setIsOpen(false)}>About Us</Link>
         </li>
         <li>
-        <Link href="/" onClick={() => setIsOpen(false)}>Blog</Link>
+        <Link href="/blog" onClick={() => setIsOpen(false)}>Blog</Link>
         </li>
         <li>
-        <Link href="/" onClick={() => setIsOpen(false)}>Events</Link>
+        <Link href="/events" onClick={() => setIsOpen(false)}>Events</Link>
         </li>
         <li>
-        <Link href="/" onClick={() => setIsOpen(false)}>Video</Link>
+        <Link href="/video" onClick={() => setIsOpen(false)}>Video</Link>
         </li>
         <li>
-        <Link href="/" onClick={() => setIsOpen(false)}>Photos</Link>
+        <Link href="/photos" onClick={() => setIsOpen(false)}>Photos</Link>
         </li>
         <li>
-        <Link href="/" onClick={() => setIsOpen(false)}>Song List</Link>
+        <Link href="/songlist" onClick={() => setIsOpen(false)}>Song List</Link>
         </li>
         <li>
-        <Link href="/" onClick={() => setIsOpen(false)}>Contact</Link>
+        <Link href="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
         </li>
 
        
@@ -74,7 +79,7 @@ export default function Header() {
     </div>
      
      {/* Overlay to Close on Click Outside */}
-     {isOpen && <div className="overlay" onClick={() => setIsOpen(false)}></div>}
+     {isOpen && <div className={styles.overlay} onClick={() => setIsOpen(false)}></div>}
      
     </nav>
         
