@@ -230,6 +230,83 @@
         background-color: rgba(0, 0, 0, 0.2);
         color: white;
       }
+      .otherYellowHeadings{
+        display: flex;
+        flex-direction: row;
+        padding-left: 5rem;
+        justify-content: left;
+        align-items: center;
+        margin-bottom: 4rem;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: #e0c35e;
+      }
+      .blogWhiteHeadings{
+        display: flex;
+        flex-direction: row;
+        padding-left: 5rem;
+        justify-content: left;
+        align-items: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white;
+      }
+      .blogYellowHeadings{
+        display: flex;
+        flex-direction: row;
+        padding-left: 5rem;
+        justify-content: left;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: #e0c35e;
+      }
+
+      .blogParagraphs {
+        display: flex;
+        flex-direction: column;
+        padding-left: 5rem;
+        justify-content: left;
+        align-items: left;
+        gap: 1rem;
+        
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white;
+      }
+      .blogImage {
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+      }
+      .blogCommentReveal {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+      }
+      .blogCommentRevealButton {
+        outline: white solid 2px;
+        color: white;
+        background-color: transparent;
+        padding: .2rem;
+        cursor: pointer;
+      }
+      .blogCommentRevealButton:hover {
+       
+        color: black;
+        background-color: white;
+        outline: none;
+        
+      }
+      .blogShareIcon {
+        margin-left: 2rem;
+      }
+      .blogShareText {
+        color: white;
+      }
+      .blogShareText:hover {
+        text-decoration: underline;
+      }
 /* Background container stays fixed */
 .fixedbackground {
   position: fixed; 
@@ -298,6 +375,8 @@
   color: white;
   background-color: rgba(0, 0, 0, 0.2); 
 }
+
+
 
 @media (prefers-color-scheme: dark) {
   .page {
