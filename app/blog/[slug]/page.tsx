@@ -4,6 +4,7 @@ import styles from "../../page.module.css";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 
+
 // export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
 //   const post = getPostBySlug(params.slug);
 
@@ -20,10 +21,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   if (!post) return notFound();
 
   return {
-    title: post.title,
-    description: post.description,
+    title: post.data.title,
+    description: post.data.description,
     openGraph: {
-      images: [post.image],
+      images: [post.data.image],
     },
   };
 }
@@ -36,23 +37,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
   return (
     <div>
-      <h1>{post.title}</h1>
-      <div>
-        <Image
-          src={post.image}
-          alt={post.title}
-          width={800}
-          height={400}
-          style={{
-            width: "clamp(200px, 35vw, 600px)",
-            height: "auto",
-          }}
-          priority
-        />
-      </div>
-
-      <p>{post.description}</p>
-
+     
       {/* Use react-markdown for post content */}
       <div >
         <ReactMarkdown
@@ -81,8 +66,8 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         <button
           onClick={() =>
             navigator.share?.({
-              title: post.title,
-              text: post.description,
+              title: post.data.title,
+              text: post.data.description,
               url: `${window.location.origin}/blog/${post.slug}`,
             })
           }

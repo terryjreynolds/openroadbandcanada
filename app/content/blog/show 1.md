@@ -1,6 +1,7 @@
 ---
 title: "Open Road Band Hosts March Madness at The Mill"
-date: "2025-03-15"
+eventDate: "2025-03-15"
+postDate: "2025-02-22"
 image: "/blogimages/05-11-24marchmadness.webp"
 description: "Join us for an epic night of music and fun at The Mill!"
 ---
