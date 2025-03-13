@@ -6,23 +6,23 @@ import styles from "../page.module.css";
 
 const POSTS_PER_PAGE = 2;
 
-export default function BlogPage({ searchParams }: { searchParams?: { page?: string } }) {
+export default async function BlogPage({ searchParams }: { searchParams?: { page?: string } }) {
   const allPosts = getPosts();
-  const currentPage = Number(searchParams?.page) || 1;
+  const currentPage = Number((await searchParams)?.page) || 1;
   const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
 
   const posts = allPosts.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
 
   return (
     <div>
-       <div className={styles.backgroundCamaro}></div>
+       <div className={styles.backgroundCamaro}></div> 
       <h1 className={styles.blogYellowHeadings}>NEWS</h1>
       {posts.map((post) => (
         <div key={post.slug}>
           <Link href={`/blog/${post.slug}`}>
             <h2 className={styles.blogWhiteHeadings}>{post.title}</h2>
           </Link>
-          <p>{post.description}</p>
+          <p>{post.content}</p>
           <small>{post.date}</small>
         </div>
       ))}

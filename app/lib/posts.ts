@@ -21,13 +21,11 @@ export function getPosts(): Post[] {
       const filePath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data, content } = matter(fileContents);
+     
   
       return {
         slug: fileName.replace(/\.md$/, ""),
-        title: data.title,
-        image: data.image,
-        description: data.description,
-        date: data.date,
+        data,
         content,
       };
     });
@@ -46,9 +44,5 @@ export function getPostBySlug(slug: string) {
     slug,
     ...data,
     content,
-    title: data.title, 
-    date: data.date,
-    description: data.description,
-    image: data.image,
   };
 }
