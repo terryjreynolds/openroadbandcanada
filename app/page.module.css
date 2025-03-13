@@ -307,6 +307,9 @@ align-items: center;
       .blogShareText:hover {
         text-decoration: underline;
       }
+      .blogContent P{
+        color: white;
+      }
 /* Background container stays fixed */
 .fixedbackground {
   position: fixed; 
