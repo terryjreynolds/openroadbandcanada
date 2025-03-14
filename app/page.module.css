@@ -366,6 +366,24 @@ align-items: center;
   overflow: hidden;
 }
 
+.backgroundBand{
+  position: fixed; /* Keep background in place */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black; /* Black background */
+  background-image: url(/ecotaybandpic.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1; /* Ensures it's behind everything */
+  overflow: hidden;
+}
+
 .bioImage {
   display: Flex;
   flex-direction: row;

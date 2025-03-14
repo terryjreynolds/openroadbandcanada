@@ -1,0 +1,41 @@
+import { NextResponse } from "next/server";
+
+export async function POST(req: Request) {
+  try {
+    
+    const body = await req.json();
+    console.log("Received body:", body);
+
+    const googleSheetsUrl = "https://script.google.com/macros/s/AKfycbyU7iildgG9ljz3fDc247E5IvHkxIEkUSUM_TbTDgpv3pmNUWqYfIJJYq2Y1jhodVK4Tg/exec";
+    console.log("Sending request to:", googleSheetsUrl);
+
+    const response = await fetch(googleSheetsUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    const text = await response.text(); // <- Use .text() to debug raw response
+console.log("Raw response from Google Sheets:", text);
+
+
+    console.log("Response status:", response.status);
+
+    if (!response.ok) {
+      throw new Error(`Failed to submit: ${response.statusText}`);
+    }
+
+    const result = await response.json();
+    console.log("Result from Google Sheets:", result);
+
+    return NextResponse.json({ message: "Comment submitted successfully", result });
+  } catch (error) {
+    console.error("Error submitting comment:", error);
+    return NextResponse.json(
+      { message: "Failed to submit comment" },
+      { status: 500 }
+    );
+  }
+}

@@ -19,7 +19,7 @@ export default async function BlogPage({ searchParams }: { searchParams?: { page
   console.log('post', posts);
   return (
     <div>
-       <div className={styles.backgroundCamaro}></div> 
+      <div className={styles.backgroundCamaro}></div> 
       <h1 className={styles.blogYellowHeadings}>NEWS</h1>
       {posts.map((post) => (
        
