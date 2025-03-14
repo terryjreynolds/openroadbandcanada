@@ -2,7 +2,20 @@
 
 import { useState } from "react";
 
-export default function CommentForm({ slug }: { slug: string }) {
+type Comment = {
+  name: string;
+  location: string;
+  comment: string;
+  date: string;
+};
+
+export default function CommentForm({
+  slug,
+  onNewComment,
+}: {
+  slug: string;
+  onNewComment: (newComment: Comment) => void;
+}) {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [comment, setComment] = useState("");
@@ -12,26 +25,27 @@ export default function CommentForm({ slug }: { slug: string }) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setError(null); // Clear previous errors
+    setError(null);
+
+    const newComment: Comment = {
+      name,
+      location,
+      comment,
+      date: new Date().toISOString(),
+    };
+
+    // Optimistic update
+    onNewComment({ ...newComment });
 
     try {
       const res = await fetch("/api/comments", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          slug,
-          name,
-          location,
-          comment,
-        }),
-        
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug, ...newComment }),
       });
 
       if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.message || "Failed to submit comment");
+        throw new Error("Failed to submit comment");
       }
 
       const data = await res.json();
@@ -41,11 +55,12 @@ export default function CommentForm({ slug }: { slug: string }) {
       setName("");
       setLocation("");
       setComment("");
-
-      alert("Comment submitted!");
     } catch (err) {
       console.error("Error submitting comment:", err);
       setError(err instanceof Error ? err.message : "Unknown error occurred");
+
+      // Rollback optimistic update on error
+      onNewComment({ ...newComment, rollback: true });
     } finally {
       setIsSubmitting(false);
     }
@@ -81,4 +96,3 @@ export default function CommentForm({ slug }: { slug: string }) {
     </form>
   );
 }
-

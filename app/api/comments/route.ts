@@ -17,18 +17,15 @@ export async function POST(req: Request) {
       body: JSON.stringify(body),
     });
 
-    const text = await response.text(); // <- Use .text() to debug raw response
-console.log("Raw response from Google Sheets:", text);
+    const result = await response.json(); // <- Use .text() to debug raw response
+console.log("Raw response from Google Sheets:", result);
 
 
     console.log("Response status:", response.status);
 
-    if (!response.ok) {
+    if (result.status !== "success") {
       throw new Error(`Failed to submit: ${response.statusText}`);
     }
-
-    const result = await response.json();
-    console.log("Result from Google Sheets:", result);
 
     return NextResponse.json({ message: "Comment submitted successfully", result });
   } catch (error) {

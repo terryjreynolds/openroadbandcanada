@@ -1,67 +1,53 @@
-import Link from "next/link";
+"use client";
+
+import { useEffect, useState } from "react";
+import { fetchComments } from "../lib/fetchcomments";
 import { getPosts } from "../lib/posts";
-import styles from "../page.module.css";
-import Image from "next/image";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShareFromSquare } from "@fortawesome/free-solid-svg-icons";
 
+export default function BlogPage() {
+  const [comments, setComments] = useState<Record<string, any[]>>({});
+  const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    const loadComments = async () => {
+      try {
+        const fetchedComments = await fetchComments();
+        setComments(fetchedComments);
+      } catch (err) {
+        console.error("Failed to fetch comments:", err);
+        setError(err instanceof Error ? err.message : "Unknown error occurred");
+      }
+    };
 
-const POSTS_PER_PAGE = 2;
+    loadComments();
+  }, []); // ✅ Runs only after initial render
 
-export default async function BlogPage({ searchParams }: { searchParams?: { page?: string } }) {
-  const allPosts = getPosts();
-  console.log('allposts', allPosts);
-  const currentPage = Number((await searchParams)?.page) || 1;
-  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+  const posts = getPosts();
 
-  const posts = allPosts.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
-  console.log('post', posts);
   return (
     <div>
-      <div className={styles.backgroundCamaro}></div> 
-      <h1 className={styles.blogYellowHeadings}>NEWS</h1>
+      <h1>Blog</h1>
       {posts.map((post) => (
-       
         <div key={post.slug}>
-          
-          <h2>{`${post.data.eventDate}-- ${post.data.title}`}</h2>
-
-          <Image
-                    src={post.data.image}
-                    alt={post.data.title}
-                    width={800}
-                    height={400}
-                    style={{
-                      width: "clamp(200px, 35vw, 600px)",
-                      height: "auto",
-                    }}
-                    priority
-                  />
+          <h2>{post.data.title}</h2>
           <p>{post.content}</p>
-          <small>{`posted: ${post.data.postDate}`}</small>
-          
-          <div className={styles.blogCommentReveal}>
-          
-          <Link href={`/blog/${post.slug}/comment`}>
-            <button>Leave a Comment</button>
-          </Link>
-
-<FontAwesomeIcon icon={faShareFromSquare} className={styles.blogShareIcon} />
-<h5 className={styles.blogShareText}>SHARE</h5>
-</div>
-
+          <h3>Comments</h3>
+          {comments[post.slug]?.length ? (
+            comments[post.slug].map((comment, index) => (
+              <div key={index}>
+                <p>
+                  <strong>{comment.name}</strong> ({comment.location}) -{" "}
+                  {new Date(comment.date).toLocaleString()}
+                </p>
+                <p>{comment.comment}</p>
+              </div>
+            ))
+          ) : (
+            <p>No comments yet.</p>
+          )}
         </div>
-      )) }
-
-      <div>
-        {currentPage > 1 && (
-          <Link href={`/blog?page=${currentPage - 1}`}>Previous</Link>
-        )}
-        {currentPage < totalPages && (
-          <Link href={`/blog?page=${currentPage + 1}`}>Next</Link>
-        )}
-      </div>
+      ))}
+      {error && <p style={{ color: "red" }}>Error: {error}</p>}
     </div>
   );
 }
