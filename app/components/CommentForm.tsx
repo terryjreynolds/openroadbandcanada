@@ -7,6 +7,7 @@ type Comment = {
   location: string;
   comment: string;
   date: string;
+  rollback?: boolean;
 };
 
 export default function CommentForm({

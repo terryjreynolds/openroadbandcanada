@@ -6,7 +6,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     console.log("Received body:", body);
 
-    const googleSheetsUrl = "";
+    const googleSheetsUrl = process.env.GOOGLE_SHEETS_ENDPOINT_URL as string;
     console.log("Sending request to:", googleSheetsUrl);
 
     const response = await fetch(googleSheetsUrl, {

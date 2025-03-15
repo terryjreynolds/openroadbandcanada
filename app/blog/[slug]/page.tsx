@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   // Await the params object since it's now a promise in Next.js 15
   const { slug } = await params;
 
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
   console.log('post',post);
  
  
@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug);
+export async function BlogPost({ params }: { params: { slug: string } }) {
+  const post = await getPostBySlug(params.slug);
  
   if (!post) return notFound();
   
