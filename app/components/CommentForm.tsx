@@ -7,7 +7,6 @@ type Comment = {
   location: string;
   comment: string;
   date: string;
-  rollback?: boolean;
 };
 
 export default function CommentForm({
@@ -15,7 +14,7 @@ export default function CommentForm({
   onNewComment,
 }: {
   slug: string;
-  onNewComment: (newComment: Comment) => void;
+  onNewComment: () => void;
 }) {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
@@ -35,9 +34,6 @@ export default function CommentForm({
       date: new Date().toISOString(),
     };
 
-    // Optimistic update
-    onNewComment({ ...newComment });
-
     try {
       const res = await fetch("/api/comments", {
         method: "POST",
@@ -56,12 +52,12 @@ export default function CommentForm({
       setName("");
       setLocation("");
       setComment("");
+
+      // Call the onNewComment callback to re-render the blog page
+      onNewComment();
     } catch (err) {
       console.error("Error submitting comment:", err);
       setError(err instanceof Error ? err.message : "Unknown error occurred");
-
-      // Rollback optimistic update on error
-      onNewComment({ ...newComment, rollback: true });
     } finally {
       setIsSubmitting(false);
     }

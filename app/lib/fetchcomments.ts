@@ -1,5 +1,5 @@
 export async function fetchComments() {
-  const url = process.env.GOOGLE_SHEETS_ENDPOINT_URL!;
+  const url = process.env.GOOGLE_SHEETS_ENDPOINT_URL as string;
   console.log("Fetching comments from:", url);
 
   const res = await fetch(url);

@@ -3,6 +3,7 @@ import CommentForm from "../../../components/CommentForm";
 import Link from "next/link";
 import styles from "../../../page.module.css";
 
+
 export default async function CommentPage({ params }: { params: { slug: string } }) {
   // Await the params to ensure they are resolved
   const { slug } = await params;
@@ -11,7 +12,8 @@ export default async function CommentPage({ params }: { params: { slug: string }
     return <div>Loading...</div>;
   }
 
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
+  console.log("Post:", post);
 
   if (!post) {
     return <div>Post not found</div>;
@@ -19,10 +21,10 @@ export default async function CommentPage({ params }: { params: { slug: string }
   return (
     <div>
       <div className={styles.backgroundBand}></div> 
-      <h2>{`${post.data.eventDate} — ${post.data.title}`}</h2>
+      <h2>{`${post.data.postDate} — ${post.data.title}`}</h2>
       <p>{post.content}</p>
 
-      <CommentForm slug={slug} />
+      <CommentForm slug={slug} onNewComment={(newComment: { id: string; content: string; author: string; }) => console.log(newComment)} />
 
       <Link href="/blog">
         <button>Back to Blog</button>

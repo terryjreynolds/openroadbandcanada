@@ -23,6 +23,7 @@ export async function getPosts() {
         slug: fileName.replace(/\.md$/, ""),
         data: {
           postDate: data.postDate || "Unknown Date", // Ensure required fields
+          eventDate: data.eventDate || "Unknown Date",
           title: data.title || "Untitled",
           description: data.description,
           image: data.description,
