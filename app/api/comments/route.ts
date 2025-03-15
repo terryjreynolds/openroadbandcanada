@@ -6,7 +6,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     console.log("Received body:", body);
 
-    const googleSheetsUrl = "https://script.google.com/macros/s/AKfycbyU7iildgG9ljz3fDc247E5IvHkxIEkUSUM_TbTDgpv3pmNUWqYfIJJYq2Y1jhodVK4Tg/exec";
+    const googleSheetsUrl = "";
     console.log("Sending request to:", googleSheetsUrl);
 
     const response = await fetch(googleSheetsUrl, {
