@@ -9,7 +9,7 @@ export default async function BlogWrapper() {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <BlogPage posts={posts} comments={comments} />
+      <BlogPage posts={posts} comments={comments}/>
     </Suspense>
   );
 }

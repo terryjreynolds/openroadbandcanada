@@ -4,6 +4,9 @@ import Link from "next/link";
 import styles from "../page.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShareFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+
+
 interface Post {
   slug: string;
   data: {
@@ -24,6 +27,13 @@ interface Comment {
   Comment: string;
 }
 
+function removeTime(dateString: string): string {
+  // Use a regular expression to match the date part
+  const dateOnly = dateString.replace(/(\d{4}-\d{2}-\d{2})T\d{2}:\d{2}:\d{2}.\d{3}Z/, '$1');
+  return dateOnly;
+}
+
+
 export default function BlogPage({
   posts,
   comments,
@@ -34,14 +44,46 @@ export default function BlogPage({
   console.log('Postsha:', posts);
   console.log('Commentsha:', comments);
 
+  const [lastCommentDate, setLastCommentDate] = useState('');
+ 
+  function isWithinOneMinute(dateString: string): boolean {
+    const commentDate = new Date(dateString);
+    const now = new Date();
+    const diffInMilliseconds = Math.abs(now.getTime() - commentDate.getTime());
+    const diffInMinutes = diffInMilliseconds / (1000 * 60);
+    console.log(diffInMinutes);
+    return diffInMinutes <= 1;
+  }
+
+  useEffect(() => {
+    if (comments.length > 0) {
+      const lastComment = comments[comments.length - 1];
+      console.log('lastComment:', lastComment);
+      setLastCommentDate(lastComment.Date);
+    }
+  }, [comments]);
+
+  useEffect(() => {
+    if (lastCommentDate && isWithinOneMinute(lastCommentDate)) {
+      const element = document.getElementById(lastCommentDate);
+      if (element) {
+        const offset = 600; // Adjust this value to set the desired offset
+        const top = element.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+  }, [lastCommentDate]);
+
+
   return (
     <div >
       <div className={styles.backgroundCamaro}></div>
-      {posts.map((post) => (
-        <div key={post.slug}>
-          <h2 className={styles.blogYellowHeadings}>
+      <h2 className={styles.blogYellowHeadings}>
      NEWS
    </h2>
+      {posts.map((post) => (
+        <div key={post.slug}>
+          
    <h2>{`${post.data.eventDate}-- ${post.data.title}`}</h2>
           <article className={styles.blogContent}>
           <p>{post.content}</p>
@@ -77,11 +119,12 @@ export default function BlogPage({
           {comments
               .filter((comment) => comment.Slug === post.slug)
               .map((comment) => (
-                <li key={`${comment.Date}-${comment.Name}`}>
-                  <strong>{comment.Date}:{comment.Name}</strong> from <em>{comment.Location}</em> said: {comment.Comment}
+                <li key={`${comment.Date}-${comment.Name}`} id={comment.Date}>
+                  <strong>{removeTime(comment.Date)}--{comment.Name}</strong> from <em>{comment.Location}</em> said: {comment.Comment}
                 </li>
               ))}
           </ul>
+         
         </div>
       ))}
     </div>

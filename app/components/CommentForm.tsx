@@ -1,8 +1,9 @@
 "use client";
-
+import { redirect } from 'next/navigation'
 import { useState } from "react";
 
 type Comment = {
+  slug: string;
   name: string;
   location: string;
   comment: string;
@@ -11,10 +12,10 @@ type Comment = {
 
 export default function CommentForm({
   slug,
-  onNewComment,
+  
 }: {
   slug: string;
-  onNewComment: () => void;
+  // onNewComment: () => void;
 }) {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
@@ -28,17 +29,18 @@ export default function CommentForm({
     setError(null);
 
     const newComment: Comment = {
+      date: new Date().toISOString(),
+      slug,
       name,
       location,
       comment,
-      date: new Date().toISOString(),
     };
 
     try {
       const res = await fetch("/api/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug, ...newComment }),
+        body: JSON.stringify({ ...newComment }),
       });
 
       if (!res.ok) {
@@ -53,13 +55,13 @@ export default function CommentForm({
       setLocation("");
       setComment("");
 
-      // Call the onNewComment callback to re-render the blog page
-      onNewComment();
     } catch (err) {
       console.error("Error submitting comment:", err);
       setError(err instanceof Error ? err.message : "Unknown error occurred");
     } finally {
+      console.log("Finally");
       setIsSubmitting(false);
+      redirect('/blog')
     }
   };
 
