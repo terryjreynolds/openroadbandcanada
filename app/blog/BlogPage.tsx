@@ -5,6 +5,7 @@ import styles from "../page.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShareFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import SocialModal from "../components/SocialModal";
 
 
 interface Post {
@@ -45,6 +46,7 @@ export default function BlogPage({
   console.log('Commentsha:', comments);
 
   const [lastCommentDate, setLastCommentDate] = useState('');
+  const [shareSelected, setShareSelected] = useState(false);
  
   function isWithinOneMinute(dateString: string): boolean {
     const commentDate = new Date(dateString);
@@ -54,6 +56,11 @@ export default function BlogPage({
     console.log(diffInMinutes);
     return diffInMinutes <= 1;
   }
+
+  const handleClick = () => {
+    alert('Button clicked!');
+    setShareSelected(true);
+  };
 
   useEffect(() => {
     if (comments.length > 0) {
@@ -109,9 +116,15 @@ export default function BlogPage({
           <Link href={`/blog/${post.slug}/comment`}>
             <button>Leave a Comment</button>
           </Link>
-
+<button onClick={handleClick}>
 <FontAwesomeIcon icon={faShareFromSquare} className={styles.blogShareIcon} />
-<h5 className={styles.blogShareText}>SHARE</h5>
+<h5 className={styles.blogShareText} >SHARE</h5>
+</button>
+
+<div className={styles.SocialModal}>
+        <SocialModal  />
+      </div>
+
 </div>
           </section>
           <h2>Comments</h2>

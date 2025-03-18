@@ -310,6 +310,23 @@ align-items: center;
       .blogContent P{
         color: white;
       }
+
+      .socialModal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width:30vw;
+        height: auto;
+        z-index: 45;
+        outline: white solid 8px;
+      }
+      .exitModalButton {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 8em;
+        height: auto;
+      }
 /* Background container stays fixed */
 .fixedbackground {
   position: fixed; 
