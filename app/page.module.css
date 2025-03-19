@@ -289,13 +289,14 @@ align-items: center;
         color: white;
         background-color: transparent;
         padding: .2rem;
-        cursor: pointer;
+      
       }
       .blogCommentRevealButton:hover {
        
         color: black;
         background-color: white;
         outline: none;
+        cursor: pointer;
         
       }
       .blogShareIcon {
@@ -306,27 +307,87 @@ align-items: center;
       }
       .blogShareText:hover {
         text-decoration: underline;
+        cursor: pointer;
+      }
+      .blogShareButton {
+        outline: transparent solid 2px;
+        background-color: transparent;
+        padding: .2rem;
+        cursor: pointer;  
+        text-decoration: none;
       }
       .blogContent P{
         color: white;
       }
 
       .socialModal {
-        position: absolute;
+        position: fixed;
         top: 50%;
         left: 50%;
-        width:30vw;
-        height: auto;
-        z-index: 45;
+        transform: translate(-50%, -50%);
+        width: 50vw;
+        height: 25vw;
+        z-index: 60;
         outline: white solid 8px;
+        display: block;
+      }
+     .socialModal ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        gap: 1rem;
+        list-style: none;
+        padding: 0;
+        margin-top: 4rem;
+      }
+      .socialModal ul li {
+        display: flex;
+        justify-content: center;
+        align-items: left;
+        
+        width: 100%;
+        height: auto;
+        list-style: none;
+        padding: 1rem;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+      .socialModal ul li:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      .socialModalClosed {
+        display: none;
+      }
+      .socialModalContainer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgb(0, 0, 0, 0.5); 
+        z-index: 50;
+      }
+      .socialModalContainerHidden {
+      display:none;
       }
       .exitModalButton {
         position: absolute;
-        top: 0;
-        right: 0;
-        width: 8em;
-        height: auto;
+        top: 10px;
+        right: 10px;
+        background-color: transparent;
+        border: none;
+        color: red;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 61; /* Ensure it appears above the modal content */
       }
+      
+      .exitModalButton:hover {
+        color: darkred;
+      }
+    
 /* Background container stays fixed */
 .fixedbackground {
   position: fixed; 

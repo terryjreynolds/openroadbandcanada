@@ -58,8 +58,16 @@ export default function BlogPage({
   }
 
   const handleClick = () => {
-    alert('Button clicked!');
+    console.log("Share button clicked");
     setShareSelected(true);
+    console.log("shareSelected:",shareSelected);
+
+  };
+
+  const handleXClick = () => {
+    console.log("Modal close button clicked");
+    setShareSelected(false);
+    console.log("shareSelected:",shareSelected);
   };
 
   useEffect(() => {
@@ -108,6 +116,7 @@ export default function BlogPage({
       }}
       priority
     />
+  
           </div>
           <small>{`posted: ${post.data.postDate}`}</small>
           <section className={styles.blogCommentReveal}>
@@ -116,14 +125,11 @@ export default function BlogPage({
           <Link href={`/blog/${post.slug}/comment`}>
             <button>Leave a Comment</button>
           </Link>
-<button onClick={handleClick}>
-<FontAwesomeIcon icon={faShareFromSquare} className={styles.blogShareIcon} />
-<h5 className={styles.blogShareText} >SHARE</h5>
-</button>
 
-<div className={styles.SocialModal}>
-        <SocialModal  />
-      </div>
+<FontAwesomeIcon icon={faShareFromSquare} className={styles.blogShareIcon} />
+<h5 onClick={handleClick} className={styles.blogShareText} >SHARE</h5>
+
+
 
 </div>
           </section>
@@ -140,6 +146,22 @@ export default function BlogPage({
          
         </div>
       ))}
+      <div className={shareSelected ? styles.socialModalContainer : styles.socialModalContainerHidden}>
+
+      
+         <div className={shareSelected ? styles.socialModal : styles.hidden}>
+
+ 
+  
+  <button className={styles.exitModalButton} onClick={handleXClick}>
+ X
+  </button>
+  
+        
+      
+        <SocialModal />
+      </div>
+      </div>
     </div>
   );
 }
