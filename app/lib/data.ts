@@ -1,5 +1,6 @@
 import { getPosts } from "./posts";
 import { fetchComments } from "./fetchcomments";
+import { getSonglist } from "./getsonglist";
 
 export async function getData() {
   try {
@@ -10,11 +11,15 @@ export async function getData() {
     const comments = await fetchComments();
     console.log("Fetched comments:", comments);
 
-    if (!posts || !comments) throw new Error("Data fetching failed");
+    const songlist = await getSonglist();
+    console.log("fetched songlist:", songlist);
+
+    if (!posts || !comments || !songlist) throw new Error("Data fetching failed");
 
     return {
       posts,
       comments,
+      songlist,
     };
   } catch (error) {
     console.error("Error in getData:", error);

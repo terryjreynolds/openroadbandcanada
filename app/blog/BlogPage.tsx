@@ -42,8 +42,6 @@ export default function BlogPage({
   posts: Post[];
   comments: Comment[];
 }) {
-  console.log('Postsha:', posts);
-  console.log('Commentsha:', comments);
 
   const [lastCommentDate, setLastCommentDate] = useState('');
   const [shareSelected, setShareSelected] = useState(false);

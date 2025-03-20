@@ -1,23 +1,16 @@
-// import Image from "next/image";
-// import styles from "./page.module.css";
-// import Link from 'next/link';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faFacebookF, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'; 
+import { Suspense } from "react";
+import SongList from "./SongList";
+import { getData } from "../lib/data";
 
+export default async function SongListWrapper() {
+    console.log('getData is called');
+  const { songlist } = await getData();
+  console.log('from inside getsonglist', songlist);
 
-
-export default function SongList() {
   return (
-    <div>
-    
-
-      
-        <h1>
-        Song List
-        </h1>
-      
-      
-    </div>
-    
+    <Suspense fallback={<div>Loading...</div>}>
+      <SongList songlist={songlist} />
+    </Suspense>
   );
 }
+
