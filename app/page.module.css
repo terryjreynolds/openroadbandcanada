@@ -328,32 +328,18 @@ align-items: center;
         width: 50vw;
         height: 25vw;
         z-index: 60;
-        outline: white solid 8px;
+        background-color: white;
         display: block;
       }
-     .socialModal ul {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        
-        gap: 1rem;
-        list-style: none;
-        padding: 0;
-        margin-top: 4rem;
-      }
-      .socialModal ul li {
-        display: flex;
-        justify-content: center;
-        align-items: left;
-        
+      .socialModalButton {
         width: 100%;
-        height: auto;
-        list-style: none;
-        padding: 1rem;
-        color: white;
-        background-color: rgba(0, 0, 0, 0.2);
+        height: 100%;
       }
+      .socialFontSize {
+        font-size: 2em;
+        margin-right: 1em;
+      }
+      
       .socialModal ul li:hover {
         background-color: rgba(0, 0, 0, 0.4);
       }
@@ -361,13 +347,20 @@ align-items: center;
         display: none;
       }
       .socialModalContainer {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgb(0, 0, 0, 0.5); 
-        z-index: 50;
+        display: flex;
+        flex-direction: column; /* Arrange items in a column */
+        justify-content: space-evenly; /* Evenly distribute space between items */
+        align-items: center; /* Center items horizontally */
+        height: 100%; /* Ensure the container takes up the full height */
+        padding: 0;
+        margin: 0;
+        list-style: none; /* Remove default list styling */
+      }
+      
+      /* Styles for each list item */
+      .socialModalContainer li {
+        width: 100%; /* Make each list item take up the full width of the container */
+        text-align: center; /* Center the text inside each list item */
       }
       .socialModalContainerHidden {
       display:none;
@@ -387,6 +380,20 @@ align-items: center;
       .exitModalButton:hover {
         color: darkred;
       }
+
+      .songListUl { 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style-type: disc;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+     .songListP {
+      color: white;
+      margin-left: 10rem;
+      margin-bottom: 10rem;
+     }
     
 /* Background container stays fixed */
 .fixedbackground {

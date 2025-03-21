@@ -1,7 +1,8 @@
 'use client';
-import SongListWrapper from "./page";
+// import SongListWrapper from "../page";
 // import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "../page.module.css";
+import ReactMarkdown from "react-markdown";
 // import Link from 'next/link';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faFacebookF, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'; 
@@ -16,7 +17,7 @@ interface SongList {
   content: string;
 }
 
-export default function BlogPage({
+export default function SongList({
   songlist,
 }: {
   songlist: SongList[];
@@ -26,15 +27,20 @@ export default function BlogPage({
 console.log('songlist:', songlist);
   return (
     <div>
+      <div className={styles.backgroundCamaro}></div>
     
-
-      <title>
+      <article>
+      <h2 className={styles.blogYellowHeadings}>
         {songlist[0].data.title}
-      </title>
-        <ul>
-          {songlist[0].content}
-        </ul>
-        <p>{songlist[0].description}</p>
+      </h2>
+      <div className={styles.songListUl}>
+      <ReactMarkdown>{songlist[0].content}</ReactMarkdown>
+      </div>
+      
+       
+        <p>{songlist[0].data.description}</p>
+      </article>
+      
       
       
     </div>
