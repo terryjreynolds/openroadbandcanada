@@ -4,19 +4,9 @@ import styles from "../../page.module.css";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 
-
-// export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-//   const post = getPostBySlug(params.slug);
-
-
+// Generate dynamic metadata for each blog post
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  // Await the params object since it's now a promise in Next.js 15
-  const { slug } = await params;
-
-  const post = await getPostBySlug(slug);
-  console.log('post',post);
- 
- 
+  const post = await getPostBySlug(params.slug);
 
   if (!post) return notFound();
 
@@ -24,22 +14,25 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     title: post.data.title,
     description: post.data.description,
     openGraph: {
+      title: post.data.title,
+      description: post.data.description,
       images: [post.data.image],
+      url: `http://localhost:3000/blog/${post.slug}`, // Replace with your live domain in production
+      type: "article",
     },
   };
 }
 
-export async function BlogPost({ params }: { params: { slug: string } }) {
+// Default export for the blog post page
+export default async function BlogPost({ params }: { params: { slug: string } }) {
   const post = await getPostBySlug(params.slug);
- 
+
   if (!post) return notFound();
-  
 
   return (
     <div>
-     
-      {/* Use react-markdown for post content */}
-      <div >
+      <h1>{post.data.title}</h1>
+      <div>
         <ReactMarkdown
           components={{
             img: ({ src, alt }) => (
@@ -54,7 +47,7 @@ export async function BlogPost({ params }: { params: { slug: string } }) {
                 }}
               />
             ),
-            p: ({ children }) => <p className={styles.paragraph}>{children}</p>, // Custom styling for paragraphs
+            p: ({ children }) => <p className={styles.paragraph}>{children}</p>,
           }}
         >
           {post.content}
