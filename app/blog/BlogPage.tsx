@@ -100,8 +100,10 @@ export default function BlogPage({
    </h2>
       {posts.map((post) => (
         <div key={post.slug}>
-          
-   <h2>{`${post.data.eventDate}-- ${post.data.title}`}</h2>
+      <Link href="/blog/[slug]/blogpost" as={`/blog/${post.slug}/blogpost`}>
+      <h2>{`${post.data.eventDate}-- ${post.data.title}`}</h2>
+      </Link>    
+   
           <article className={styles.blogContent}>
           <p>{post.content}</p>
           </article>
@@ -124,7 +126,7 @@ export default function BlogPage({
           <section className={styles.blogCommentReveal}>
           <div className={styles.blogCommentReveal}>
           
-          <Link href={`/blog/${post.slug}/blogpost/#comment`}>
+          <Link href={`/blog/${post.slug}/blogpost`}>
             <button>Leave a Comment</button>
           </Link>
 
