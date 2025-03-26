@@ -66,7 +66,7 @@ export default function CommentForm({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="comment" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Name"

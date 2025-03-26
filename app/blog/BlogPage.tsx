@@ -124,7 +124,7 @@ export default function BlogPage({
           <section className={styles.blogCommentReveal}>
           <div className={styles.blogCommentReveal}>
           
-          <Link href={`/blog/${post.slug}/comment`}>
+          <Link href={`/blog/${post.slug}/blogpost/#comment`}>
             <button>Leave a Comment</button>
           </Link>
 
