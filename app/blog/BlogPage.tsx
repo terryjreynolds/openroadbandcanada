@@ -47,6 +47,7 @@ export default function BlogPage({
   const [shareSelected, setShareSelected] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [modalSlug, setModalSlug] = useState('');
+  const [modalContent, setModalContent] = useState('');
  
   function isWithinOneMinute(dateString: string): boolean {
     const commentDate = new Date(dateString);
@@ -57,11 +58,12 @@ export default function BlogPage({
     return diffInMinutes <= 1;
   }
 
-  const handleClick = (title : string, slug: string) => {
+  const handleClick = (title : string, slug: string, content: string) => {
     console.log("Share button clicked");
     setShareSelected(true);
     setModalTitle(title);
     setModalSlug(slug);
+    setModalSlug(content);
     console.log("shareSelected:",shareSelected);
 
   };
@@ -131,7 +133,7 @@ export default function BlogPage({
           </Link>
 
 <FontAwesomeIcon icon={faShareFromSquare} className={styles.blogShareIcon} />
-<h5 id={post.slug} onClick={() => handleClick(post.data.title, post.slug)}  className={styles.blogShareText} >SHARE</h5>
+<h5 id={post.slug} onClick={() => handleClick(post.data.title, post.slug, post.content)}  className={styles.blogShareText} >SHARE</h5>
 
 
 
@@ -161,7 +163,7 @@ export default function BlogPage({
  X
   </button>
        
-        <SocialModal postTitle={modalTitle} slug={modalSlug} />
+        <SocialModal postTitle={modalTitle} slug={modalSlug} content={modalContent} />
       </div>
       </div>
     </div>

@@ -13,9 +13,10 @@ import { faLink, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 interface SocialModalProps {
   postTitle: string; 
   slug: string;
+  content: string;
 }
 
-export default function SocialModal({ postTitle, slug }: SocialModalProps) {
+export default function SocialModal({ postTitle, slug, content}: SocialModalProps) {
 
   console.log("postTitle:", postTitle);
  
@@ -27,6 +28,7 @@ export default function SocialModal({ postTitle, slug }: SocialModalProps) {
   const handleFBClick = () => {
     console.log("Share FB clicked for post", postTitle);
     console.log('the slug for FB is:', slug);
+    console.log('the content for FB is:', content);
     const postUrl = `localhost:3000/blog/${slug}`; // Replace with your actual blog post URL structure
     const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}`;
     window.open(facebookShareUrl, "_blank", "noopener,noreferrer");

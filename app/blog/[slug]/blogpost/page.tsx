@@ -3,7 +3,7 @@ import CommentForm from "../../../components/CommentForm";
 import Link from "next/link";
 import styles from "../../../page.module.css";
 
-//This is the page that will be rendered when a user leaves a comment
+//This is the page that will be rendered when a user leaves views a blogpost or leaves a comment
 export default async function CommentPage({ params }: { params: { slug: string } }) {
   // Await the params to ensure they are resolved
   const { slug } = await params;
