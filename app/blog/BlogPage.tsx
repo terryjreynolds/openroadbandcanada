@@ -133,7 +133,8 @@ export default function BlogPage({
           </Link>
 
 <FontAwesomeIcon icon={faShareFromSquare} className={styles.blogShareIcon} />
-<h5 id={post.slug} onClick={() => handleClick(post.data.title, post.slug, post.content)}  className={styles.blogShareText} >SHARE</h5>
+<h5 id={post.slug} onClick={() => handleClick(post.data.title, post.slug, post.content)}  
+className={styles.blogShareText} >SHARE</h5>
 
 
 
