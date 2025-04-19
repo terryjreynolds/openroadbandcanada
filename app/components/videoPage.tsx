@@ -1,13 +1,20 @@
 // components/VideoPage.tsx
+
+import styles from "../page.module.css";
+
 type Props = {
   urls: string[];
 };
 
 export default function VideoPage({ urls }: { urls: string[] }) {
   return (
-    <main className="video-page">
-      <h1 className="video-title">Our Videos</h1>
-      <div className="video-grid">
+    
+
+    
+    <main className={styles.videoPage}>
+      <div className={styles.backgroundCamaro}></div>
+      <h1 className={styles.videoTitle}>Our Videos</h1>
+      <div className={styles.videoGrid}>
         {urls.map((url, index) => (
           <iframe
             key={index}
@@ -19,6 +26,7 @@ export default function VideoPage({ urls }: { urls: string[] }) {
         ))}
       </div>
     </main>
+    
   );
 }
 
