@@ -394,6 +394,36 @@ align-items: center;
       margin-left: 10rem;
       margin-bottom: 10rem;
      }
+
+/* Main container styling */
+.video-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.video-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* Grid container */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 16px; /* Space between items */
+}
+
+/* Individual video items */
+.video-item {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  border-radius: 8px; /* Optional rounded corners */
+}
     
 /* Background container stays fixed */
 .fixedbackground {
@@ -544,4 +574,17 @@ align-items: center;
   }
 }
 
+/* ***************  queries for video page************ */
+/* Adjust to 2 columns on medium screens */
+@media (max-width: 768px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
+/* Adjust to 1 column on small screens */
+@media (max-width: 480px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
