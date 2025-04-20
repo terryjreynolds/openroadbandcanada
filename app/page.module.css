@@ -420,12 +420,38 @@ align-items: center;
 }
 
 /* Individual video items */
-.video-item {
+.videoItem {
   width: 100%;
   aspect-ratio: 16 / 9; /* Maintain a 16:9 aspect ratio */
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
   border-radius: 8px; /* Optional rounded corners */
+}
+
+/* Container for the events list */
+.eventGrid {
+  display: flex;
+  flex-direction: column; /* Stack rows vertically */
+  gap: 16px; /* Space between rows */
+  margin: 16px 0;
+}
+
+/* Each event row */
+.eventRow {
+  display: flex;
+  justify-content: space-between; /* Spread items across the row */
+  align-items: center; /* Align items vertically */
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Individual items (date, event, location) */
+.eventItem {
+  flex: 1; /* Allow items to grow equally */
+  text-align: center; /* Center-align text */
+  padding: 0 8px; /* Add spacing between items */
 }
     
 /* Background container stays fixed */

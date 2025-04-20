@@ -2,9 +2,9 @@
 
 import styles from "../page.module.css";
 
-type Props = {
-  urls: string[];
-};
+// type Props = {
+//   urls: string[];
+// };
 
 export default function VideoPage({ urls }: { urls: string[] }) {
   return (
@@ -21,7 +21,7 @@ export default function VideoPage({ urls }: { urls: string[] }) {
             src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}`}
             allow="autoplay; encrypted-media"
             allowFullScreen
-            className="video-item"
+            className={styles.videoItem}
           ></iframe>
         ))}
       </div>
