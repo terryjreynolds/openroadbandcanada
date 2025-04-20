@@ -1,9 +1,8 @@
-import { getEvents } from "../lib/getEvents";
+import { getPreviousEvents } from "../lib/getPreviousEvents";
 import styles from "../page.module.css"
-import Link from "next/link";
 
 export async function getStaticProps() {
-  const events =  getEvents();
+  const events = getPreviousEvents();
 
   return {
     props: {
@@ -12,14 +11,12 @@ export async function getStaticProps() {
   };
 }
 
-
-export default function EventsPage({ events }: { events: any[] }) {
+export default function PreviousEventsPage({ events }: { events: any[] }) {
   return (
     <div className={styles.eventGrid}>
       <div className={styles.backgroundCamaro}></div>
-     
       
-      <h2 className={styles.blogYellowHeadings}>Upcoming Events</h2>
+      <h2 className={styles.blogYellowHeadings}>Previous Events</h2>
       {events.map((event, index) => (
         <div key={index}  className={styles.eventRow}
         >
@@ -28,7 +25,10 @@ export default function EventsPage({ events }: { events: any[] }) {
           <p className={styles.eventItem}>Location: {event.location}</p>
         </div>
       ))}
-      <Link className={styles.blogYellowHeadings} href="/previousEvents" >Previous Events</Link>
+      
+      
+        
+      
     </div>
   );
 }

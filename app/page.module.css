@@ -444,7 +444,8 @@ align-items: center;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 /* Individual items (date, event, location) */
@@ -615,5 +616,18 @@ align-items: center;
 @media (max-width: 768px) {
   .videoGrid{
     grid-template-columns: 1fr;
+  }
+}
+
+/*********** queries for events page ************/
+@media (max-width: 768px) {
+  .eventRow {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .eventItem {
+    text-align: left; /* Align text to the left */
+    padding: 4px 0; /* Adjust padding */
   }
 }
