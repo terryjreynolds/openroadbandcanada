@@ -454,6 +454,37 @@ align-items: center;
   text-align: center; /* Center-align text */
   padding: 0 8px; /* Add spacing between items */
 }
+
+/* ************* Previous Event Pagination ************** */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.paginationButton {
+  padding: 8px 12px;
+  border: 1px solid #e0c35e;
+  background-color: #e0c35e;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.paginationButton:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.activePage {
+  background-color: rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  pointer-events: none; /* Disable clicking on the current page */
+}
     
 /* Background container stays fixed */
 .fixedbackground {

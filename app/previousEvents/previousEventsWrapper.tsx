@@ -1,19 +1,25 @@
-import { Suspense } from "react";
-import EventPage from "../components/previousEventsPage";
 import { getPreviousEvents } from "../lib/getPreviousEvents";
+import { paginatePreviousEvents } from "../lib/paginatePreviousEvents";
+import PreviousEventsPage from "../components/previousEventsPage";
 
-export default async function PreviousEventWrapper() {
-  try {
-    // Fetch the events data
-    const previousEvents = await getPreviousEvents();
+export default function PreviousEventsWrapper({ searchParams }: { searchParams: { page?: string } }) {
+  const events = getPreviousEvents();
 
-    return (
-      <Suspense fallback={<div>Loading events...</div>}>
-        <EventPage events={previousEvents} />
-      </Suspense>
-    );
-  } catch (error) {
-    console.error("Error fetching events:", error);
-    return <div>Failed to load events. Please try again later.</div>;
-  }
+  // Get the current page from the query parameter (default to 1)
+  const currentPage = searchParams.page ? parseInt(searchParams.page, 10) : 1;
+  const itemsPerPage = 8; // Number of events per page
+
+  // Paginate the events
+  const paginatedEvents = paginatePreviousEvents(events, currentPage, itemsPerPage);
+
+  // Calculate total pages
+  const totalPages = Math.ceil(events.length / itemsPerPage);
+
+  return (
+    <PreviousEventsPage
+      events={paginatedEvents}
+      currentPage={currentPage}
+      totalPages={totalPages}
+    />
+  );
 }
