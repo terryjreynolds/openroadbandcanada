@@ -63,7 +63,7 @@ export default function BlogPage({
     setShareSelected(true);
     setModalTitle(title);
     setModalSlug(slug);
-    setModalSlug(content);
+    setModalContent(content);
     console.log("shareSelected:",shareSelected);
 
   };

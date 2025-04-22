@@ -1,12 +1,19 @@
 import Link from "next/link";
 import styles from "../page.module.css";
 
+
+interface Event {
+  date: string;
+  event: string;
+  location: string;
+}
+
 export default function PreviousEventsPage({
   events,
   currentPage,
   totalPages,
 }: {
-  events: any[];
+  events: Event[];
   currentPage: number;
   totalPages: number;
 }) {
